@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="{{ url_for('static', path='css/item.css')}}" />
+<div class="itemBody" id="item-{{item.id}}">
+  <div class="left">
+    <button class="itemCompleted" type="checkbox"></button>
+    <p class="itemTitle">{{ item.name }}</p>
+  </div>
+  <div class="right">
+    <div class="itemQuantity">
+      <button
+        type=""
+        class="itemReduce"
+        hx-post="/item/{{item.id}}/decrease"
+        hx-swap="outerHTML"
+        hx-target="#item-{{item.id}}"
+      >
+        -
+      </button>
+      <p class="itemQuantityNum">{{ item.num }}</p>
+      <button
+        type=""
+        class="itemIncrease"
+        hx-post="/item/{{item.id}}/increase"
+        hx-swap="outerHTML"
+        hx-target="#item-{{item.id}}"
+      >
+        +
+      </button>
+    </div>
+    <button
+      class="itemDelete"
+      hx-delete="/item/{{item.id}}"
+      hx-swap="innerHTML"
+      hx-target=".listItems"
+      hx-confirm="Tem certeza?"
+    ></button>
+  </div>
+</div>

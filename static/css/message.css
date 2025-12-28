@@ -1,0 +1,13 @@
+h2 {
+    width: 50%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        width: 85%;
+    }
+}

@@ -1,0 +1,10 @@
+<div class="listHeader">
+  <p>ITENS [{{ itemslength }}]</p>
+  <p>AÇÕES</p>
+</div>
+{% if not items %}
+    <p>Tem nada</p>
+{% endif %} 
+{% for item in items %} 
+    {% include "components/item.html" %} 
+{% endfor %}

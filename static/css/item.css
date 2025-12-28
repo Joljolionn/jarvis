@@ -1,0 +1,73 @@
+.itemBody {
+    margin-top: 20px;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 1px 1px 3px,
+    rgba(0, 0, 0, 0.14) 1px 1px 3px;
+  border-radius: 10px;
+  padding: 0px 30px;
+}
+
+.itemBody .left {
+  display: flex;
+}
+
+.itemBody .left .itemCompleted {
+  height: 20px;
+  width: 20px;
+  margin-right: 30px;
+}
+
+.itemBody .left .itemTitle {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.itemBody .right {
+  display: flex;
+  align-items: center;
+}
+
+.itemBody .right .itemQuantity {
+  height: 2em;
+  width: 140px;
+  display: flex;
+  background-color: #F6F8F6;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.10) 1px 1px 4px,
+    rgba(0, 0, 0, 0.20) 1px 1px 4px;
+}
+
+.itemBody .right .itemQuantity .itemReduce {
+    height: 100%;
+    width: 30%;
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.itemBody .right .itemQuantity .itemQuantityNum {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.itemBody .right .itemQuantity .itemIncrease {
+    height: 100%;
+    width: 30%;
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.itemBody .right .itemDelete {
+  height: 20px;
+  width: 20px;
+  margin-left: 30px;
+}
