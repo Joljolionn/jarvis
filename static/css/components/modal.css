@@ -1,0 +1,140 @@
+.modalOverlay {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal {
+    height: 400px;
+    width: 600px;
+    /* display: none; */
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 1px 1px 3px,
+    rgba(0, 0, 0, 0.14) 1px 10px 3px;
+}
+
+@media (width < 600px) {
+    .modal {
+        width: 90%;
+    }
+}
+
+.modalHeader {
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    padding: 20px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/static/img/vegetables.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.modalHeader .modalExit {
+    height: 50%;
+}
+
+.modalHeader .modalExit>button {
+    margin: 20px;
+    padding: 0.8em 1em;
+    border-radius: 40%;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out 0.1s;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.modalHeader .modalExit>button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.modalHeader .modalTitle {
+    height: 50%;
+    width: 100%;
+    margin-left: 20px;
+    color: white;
+}
+
+.modalHeader .modalTitle>p {
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.modalBody {
+    height: 60%;
+}
+
+.modalBody .modalInput {
+    height: 70%;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBody .modalInput>* {
+    width: 100%;
+}
+
+.modalBody .modalInput>label {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.modalBody .modalInput #modalInputBox {
+    margin: 5px 0;
+    height: 2em;
+    padding: 1.8em;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #a3a3a3;
+    box-shadow:
+        rgba(0, 0, 0, 0.07) 1px 1px 3px,
+        rgba(0, 0, 0, 0.14) 1px 1px 3px;
+    transition: ease-in-out 0.1s;
+}
+
+.modalBody .modalInput #modalInputBox:focus {
+    border: 3px solid #13ec5b;
+    outline: none;
+}
+
+.modalBody .modalButtons {
+    height: 30%;
+    margin: 0 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalBody .modalButtons>button {
+    font-size: 18px;
+    padding: 1em 5.2em;
+    border-radius: 15px;
+    border: 1px solid #a3a3a3;
+    box-shadow:
+        rgba(0, 0, 0, 0.07) 1px 1px 3px,
+        rgba(0, 0, 0, 0.14) 1px 1px 3px;
+    cursor: pointer;
+}
+
+#buttonCancelar {
+    background-color: white;
+}
+
+#buttonAdicionar {
+    background-color: #13ec5b;
+}

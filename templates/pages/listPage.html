@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{{  url_for('static', path='css/pages/list.css') }}"/>
+    {% include "components/modal.html" %}
+        <div class="topBar">
+            <div class="left">
+                <input type="text" name="" value="" placeholder="Buscar item...">
+            </div>
+            <div class="right">
+                <div class="listFilters">
+                    <button>Todos</button>
+                    <button>Pendentes</button>
+                    <button>Concluídos</button>
+                </div>
+                <button id="addItemButton">Novo Item</button>
+            </div>
+        </div>
+        <div class="listItems">
+            <div class="listHeader">
+              <p>ITENS [{{ itemslength }}]</p>
+              <p>AÇÕES</p>
+            </div>
+            {% if not items %}
+                <p>Tem nada</p>
+            {% endif %} 
+            {% for item in items %} 
+                {% include "components/item.html" %} 
+            {% endfor %}
+        </div>
+        <script defer>
+            const modalOverLay = document.getElementById("modalOverlay");
+            const addItemButton = document.getElementById("addItemButton");
+
+            addItemButton.addEventListener("click", () => {
+              modalOverLay.style.display = "flex";
+              modalInput.focus();
+            });
+        </script>
+{% endblock %}

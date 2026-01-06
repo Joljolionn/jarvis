@@ -1,9 +1,22 @@
-<link rel="stylesheet" href="{{ url_for('static', path='css/item.css')}}" />
-<div class="itemBody" id="item-{{item.id}}">
+<link rel="stylesheet" href="{{ url_for('static', path='css/components/item.css')}}" />
+<div class="itemBody" id="item-{{item.id}}" hx-history="false">
+
   <div class="left">
-    <button class="itemCompleted" type="checkbox"></button>
+    <input type="checkbox" {{ "checked" if item.completed else ""  }}
+        id="check-{{ item.id }}" class="custom-checkbox"  
+        name="completed"
+        hx-post="/item/{{item.id}}/completed"
+        hx-swap="outerHTML transition:true"
+        hx-target="#item-{{item.id}}"
+        hx-trigger="change"
+        hx-include="this"
+        hx-sync="this:replace"
+        autocomplete="off"
+        />
+    <label for="check-{{ item.id }}" class="checkbox-skin" ></label>
     <p class="itemTitle">{{ item.name }}</p>
   </div>
+
   <div class="right">
     <div class="itemQuantity">
       <button

@@ -10,36 +10,45 @@ aplicativo também pra facilitar a integração e cache e tals
 
 ### Ferramentas:
 
-- Backend: 
-    - Python
-    - Sqlite
-     <!-- - Docker ---!>
+- Backend:
+  - Python
+  - Sqlite
+  <!-- - Docker ---!>
 
 <br>
 
-- Frontend: 
-    - HTML
-    - CSS
-    - Javascript
-    - Frameworks: 
-        - Jinja
-        - HTMX
+- Frontend:
+  - HTML
+  - CSS
+  - Javascript
+  - Frameworks:
+    - Jinja
+    - HTMX
 
 ### A fazeres:
 
 - [ ] Criar script para lançar o arquivo no servidor (subir no git, fazer ssh,
-  clonar a nova versão no server, ativar o venv, instalar as dependências
-  necessárias e rodar o serviço) 
+      clonar a nova versão no server, ativar o venv, instalar as dependências
+      necessárias e rodar o serviço)
 
 - [ ] Terminar lista de compras
-    - [ ] Finalizar javascript:
-        - [ ] Fazer com que o estilo da tarefa mude quando estiver completa
-        - [ ] Fazer com que o toggle dos filtros funcione
-        - [ ] Finalizar botão para abrir modal com funcionalidade de adicionar
+  - [x] Finalizar javascript e estilização:
+    - [x] Fazer com que o estilo da tarefa mude quando estiver completa
+      - [x] Fazer com que a checkbox mude de estilo quando completa
+      - [x] Fazer com que o corpo inteiro da tarefa mude de estilo quando
+            completa
+    - [x] Finalizar botão para abrir modal com funcionalidade de adicionar
           novo item
-    - [ ] Adicionar efeito de hover nos botões
-    - [ ] Adicionar ícones na página
+      - [x] Finalizar estilo do Modal
+      - [x] Finalizar função de adicionar itens
+      - [x] Finalizar botão de abrir e fechar modal
+  - [ ] Fazer com que o toggle dos filtros funcione
+  - [ ] Fazer com que a barra de pesquisa funcione
+  - [ ] Adicionar efeito de hover nos botões
+  - [ ] Adicionar ícones na página
+  - [ ] Tornar o site responsivo
+  - [ ] Fazer refatoração final
 
 - [ ] Fazer sistema de avisos compartilhado (cada um faz login no sistema,
-  colocar uma foto e nome e sobe lembretes compartilhados com data marcada de
-  forma aos dois poderem ver)
+      colocar uma foto e nome e sobe lembretes compartilhados com data marcada de
+      forma aos dois poderem ver)
