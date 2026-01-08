@@ -42,11 +42,11 @@ aplicativo também pra facilitar a integração e cache e tals
       - [x] Finalizar estilo do Modal
       - [x] Finalizar função de adicionar itens
       - [x] Finalizar botão de abrir e fechar modal
-  - [ ] Fazer com que o toggle dos filtros funcione
-  - [ ] Fazer com que a barra de pesquisa funcione
-  - [ ] Adicionar efeito de hover nos botões
+  - [x] Fazer com que o toggle dos filtros funcione
+  - [x] Fazer com que a barra de pesquisa funcione
+  - [x] Adicionar efeito de hover nos botões
+  - [x] Tornar o site responsivo
   - [ ] Adicionar ícones na página
-  - [ ] Tornar o site responsivo
   - [ ] Fazer refatoração final
 
 - [ ] Fazer sistema de avisos compartilhado (cada um faz login no sistema,

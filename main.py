@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+from sqlalchemy.orm import query
 import db
 import requests
 import json
@@ -99,6 +100,7 @@ async def toggle_completed_item(
             "components/item.html", {"request": request, "item": item}
         )
 
+
 @app.post("/item", response_class=HTMLResponse)
 async def add_new_item(request: Request, name: str = Form("")):
     name = name.strip()
@@ -113,8 +115,27 @@ async def add_new_item(request: Request, name: str = Form("")):
         item.num = 1
         session.add(item)
         session.commit()
-        session.refresh(item) 
+        session.refresh(item)
 
     return templates.TemplateResponse(
         "components/item.html", {"request": request, "item": item}
     )
+
+
+@app.get("/tasks", response_class=HTMLResponse)
+async def search_item_list(request: Request, status: str = "all", search: str = ""):
+    with db._Session() as session:
+        items_query = session.query(db.Item)
+        if status == "completed":
+            items_query = session.query(db.Item).filter(db.Item.completed == True)
+        elif status == "pending":
+            items_query = session.query(db.Item).filter(db.Item.completed == False)
+
+        if search:
+            items_query = items_query.filter(db.Item.name.contains(search))
+
+        items = items_query.all()
+
+        return templates.TemplateResponse(
+                "/components/itemsList.html", {"request": request, "items": items, "itemslength": len(items)}
+        )

@@ -13,7 +13,7 @@
 }
 
 .modal {
-    height: 400px;
+    min-height: 400px;
     width: 600px;
     /* display: none; */
     background-color: white;
@@ -28,6 +28,8 @@
     .modal {
         width: 90%;
     }
+
+    
 }
 
 .modalHeader {
@@ -116,6 +118,7 @@
     margin: 0 20px;
     padding-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -137,4 +140,26 @@
 
 #buttonAdicionar {
     background-color: #13ec5b;
+}
+
+
+@media (width < 600px) {
+    /* Usamos o caminho completo para ganhar na especificidade */
+    .modalBody .modalInput {
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Garante que labels também centralizem */
+    }
+
+    .modalBody .modalButtons {
+        justify-content: center; 
+        gap: 10px; /* Adiciona um espaço entre os botões quando empilharem */
+    }
+
+    .modalBody .modalButtons > button {
+        /* Reduzimos o padding lateral fixo para que o botão caiba no mobile */
+        padding: 1em 2em; 
+        width: 100%; /* Opcional: faz os botões ocuparem a largura toda em mobile */
+        max-width: 300px; /* Impede que fiquem gigantes em telas médias */
+    }
 }
