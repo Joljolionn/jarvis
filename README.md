@@ -49,7 +49,7 @@ aplicativo também pra facilitar a integração e cache e tals
   - [ ] Adicionar ícones na página
     - [x] Adicionar ícone de lixeira para deletar itens
     - [x] Adicionar icone de lupa para busca de itens
-    - [ ] Adicionar icone de + para adicionar itens
+    - [x] Adicionar icone de + para adicionar itens
     - [ ] Adicionar icone de carrinho no topo do site
     - [ ] Adicionar icone para a página em si
   - [ ] Fazer refatoração final

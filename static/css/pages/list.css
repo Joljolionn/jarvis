@@ -104,6 +104,10 @@
     font-weight: 600;
     border-radius: 10px;
     background-color: #13ec5b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     border: none;
     box-shadow:
         rgba(0, 0, 0, 0.07) 1px 1px 3px,
@@ -112,7 +116,14 @@
     transition: all 0.3s ease-in-out;
 }
 
-.topBar .right>button:hover {
+#addItemButton svg{
+    height: 20px;
+    width: 20px;
+    margin: 0 5px;
+}
+
+
+.topBar .right>span:hover {
     filter: brightness(0.90);
 }
 

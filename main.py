@@ -25,7 +25,7 @@ async def get_root(request: Request, response: Response):
             print(f"{item.name} - {item.completed}")
     print("Página atualizada")
     return templates.TemplateResponse(
-        "pages/listPage.html",
+        "pages/list.html",
         {"request": request, "items": items, "itemslength": len(items)},
     )
 
@@ -36,7 +36,7 @@ async def get_message(request: Request):
     message = json.loads(res.text)
 
     return templates.TemplateResponse(
-        "pages/messagePage.html", {"request": request, "message": message["mensage"]}
+        "pages/message.html", {"request": request, "message": message["mensage"]}
     )
 
 
