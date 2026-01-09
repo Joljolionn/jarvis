@@ -1,0 +1,10 @@
+#header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#header svg {
+    width: 1em;
+    height: 1em;
+}
