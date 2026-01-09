@@ -1,152 +1,162 @@
 /* --- CONTAINER PRINCIPAL --- */
 .itemBody {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  min-height: 60px;
-  padding: 0 30px;
-  margin-top: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow:
-    1px 1px 3px rgba(0, 0, 0, 0.07),
-    1px 1px 3px rgba(0, 0, 0, 0.14);
-  transition:
-    background-color 0.3s ease-in-out,
-    opacity 0.3s ease-in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    padding: 0 30px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.07),
+        1px 1px 3px rgba(0, 0, 0, 0.14);
+    transition:
+        background-color 0.3s ease-in-out,
+        opacity 0.3s ease-in;
 }
 
 /* --- LADO ESQUERDO: Checkbox e Título --- */
 .itemBody .left {
-  display: flex;
-  align-items: center;
-  /* Alinhamento centralizado garantido */
+    display: flex;
+    align-items: center;
+    /* Alinhamento centralizado garantido */
 }
 
 .itemBody .custom-checkbox {
-  display: none;
+    display: none;
 }
 
 .itemBody .checkbox-skin {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  border: 2px solid #555;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 2px solid #555;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 
-
-
 .itemBody .checkbox-skin::after {
-  content: "✓";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: white;
-  font-weight: bold;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.2s ease;
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-weight: bold;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease;
 }
 
 .itemBody .itemTitle {
-  margin-left: 20px;
-  font-size: 1.2em;
-  font-weight: 600;
-  text-decoration: none;
-  opacity: 1;
-  transition: all 0.3s ease-in-out, text-decoration 0.3s ease-in;
+    margin-left: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 1;
+    transition:
+        all 0.3s ease-in-out,
+        text-decoration 0.3s ease-in;
 }
 
 /* --- LADO DIREITO: Quantidade e Ações --- */
 .itemBody .right {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .itemBody .itemQuantity {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 140px;
-  height: 2em;
-  background-color: #f6f8f6;
-  box-shadow:
-    1px 1px 4px rgba(0, 0, 0, 0.1),
-    1px 1px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 140px;
+    height: 2em;
+    background-color: #f6f8f6;
+    box-shadow:
+        1px 1px 4px rgba(0, 0, 0, 0.1),
+        1px 1px 4px rgba(0, 0, 0, 0.2);
     opacity: 1;
     pointer-events: auto;
     transition: opacity 0.3s ease-in;
 }
 
 .itemBody .itemQuantity button {
-  width: 30%;
-  height: 100%;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+    width: 30%;
+    height: 100%;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
-
 
 .itemBody .itemQuantity button:hover {
     filter: brightness(0.9);
 }
 
 .itemBody .itemQuantityNum {
-  font-size: 1em;
-  font-weight: 600;
+    font-size: 1em;
+    font-weight: 600;
 }
 
 .itemBody .itemDelete {
-  width: 20px;
-  height: 20px;
-  margin-left: 30px;
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+    cursor: pointer;
 }
+
+.itemDelete svg {
+    height: 100%;
+    width: 100%;
+    fill: #666; /* Cor cinza inicial */
+    transition: fill 0.2s ease-in-out;
+}
+
+.itemDelete:hover svg {
+    fill: #ff4d4d; 
+}
+
 
 /* --- ESTADOS (CHECKED / HTMX) --- */
 
 /* Quando o checkbox está marcado */
-.itemBody .custom-checkbox:checked + .checkbox-skin {
-  background-color: #4caf50;
-  border-color: #4caf50;
+.itemBody .custom-checkbox:checked+.checkbox-skin {
+    background-color: #4caf50;
+    border-color: #4caf50;
 }
 
-.itemBody .custom-checkbox:checked + .checkbox-skin::after {
-  transform: translate(-50%, -50%) scale(1);
+.itemBody .custom-checkbox:checked+.checkbox-skin::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Alterações no Body via :has */
 .itemBody:has(.custom-checkbox:checked) {
-  background-color: rgba(0, 0, 0, 0.08);
-  border-color: transparent;
-  opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+    opacity: 0.8;
 }
 
 .itemBody:has(.custom-checkbox:checked) .itemTitle {
-  text-decoration: line-through;
-  opacity: 0.5;
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 .itemBody:has(.custom-checkbox:checked) .itemQuantity {
-  opacity: 0.3;
-  pointer-events: none;
+    opacity: 0.3;
+    pointer-events: none;
 }
 
-@media(width < 600px) {
+@media (width < 600px) {
     .itemBody {
         flex-wrap: wrap;
     }
 
-    .itemBody > *{
+    .itemBody>* {
         margin: 10px 0;
         width: 100%;
     }
 
-    .itemBody .right{
-        justify-content: flex-end;
-    }
 }

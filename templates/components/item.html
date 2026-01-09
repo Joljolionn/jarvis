@@ -39,12 +39,12 @@
         +
       </button>
     </div>
-    <button
+    <span src="{{ url_for('static', path='/img/trash.svg') }}"
       class="itemDelete"
       hx-delete="/item/{{item.id}}"
       hx-swap="innerHTML"
       hx-target=".listItems"
       hx-confirm="Tem certeza?"
-    ></button>
+      >{% include 'icons/trash.svg' %}</span>
   </div>
 </div>
