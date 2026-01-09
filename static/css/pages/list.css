@@ -9,26 +9,46 @@
 
 
 
- .left {
-    height: 100%;
+.topBar .left {
+     height: 3em;
     width: 40%;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow:
+    rgba(0, 0, 0, 0.07) 1px 1px 3px,
+    rgba(0, 0, 0, 0.14) 1px 1px 3px;
+    color: darkgreen;
+    border: none;
+}
+
+.left span {
+    height: 100%;
+    width: 20px;
+    margin: 0 10px;
+}
+
+.left span svg {
+    height: 100%;
+    width: 100%;
+    fill: black;
 }
 
 .topBar .left input {
-    height: 3em;
     width: 100%;
-    border-radius: 10px;
+    height: 100%;
+    padding: 10px;
     border: none;
-    box-sizing: border-box;
-    box-shadow:
-        rgba(0, 0, 0, 0.07) 1px 1px 3px,
-        rgba(0, 0, 0, 0.14) 1px 1px 3px;
-    color: darkgreen;
+    border-radius: 0 10px 10px 0;
+    background-color: transparent;
 }
 
+
+.topBar .left input:focus {
+    outline: none;
+}
  .right {
     min-height: 2em;
     width: 50%;
@@ -108,7 +128,11 @@
         flex-direction: column;
     }
 
-    .topBar > * {
+    .topBar .left {
+        width: 100%;
+    }
+
+    .topBar .right {
         width: 100%;
     }
 

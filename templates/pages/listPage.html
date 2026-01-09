@@ -6,6 +6,9 @@
     {% include "components/modal.html" %}
         <div class="topBar">
     <div class="left">
+        <span>
+            {% include 'icons/searchmagnifier.svg' %}
+        </span>
         <input type="text" id="search-input" name="search" placeholder="Buscar item..." 
                hx-get="/tasks" 
                hx-target=".listItems" 
