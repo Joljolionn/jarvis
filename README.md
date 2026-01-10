@@ -1,12 +1,11 @@
 # Projeto Jarvis
 
-Proposta: Quero que seja um projeto no qual eu consiga ter umas funcionalidades
-pra integrar eu e minha mãe e tals por aqui, ou seja, quero que dê pra fazer
-umas coisas como lista de compras, contas pra pagar e calendário (talvez... mas
-mais pra frente)
+Proposta: Quero que seja um projeto no qual eu consiga ter funcionalidades
+pra integrar minha casa, ou seja, quero que dê pra fazer
+ coisas como lista de compras, contas pra pagar e calendário 
 
-Aplicação: Acho que vou começar com o site mesmo e depois vou pro lado de
-aplicativo também pra facilitar a integração e cache e tals
+Aplicação: Vou começar com o site mesmo e depois vou pro lado de
+aplicativo também pra facilitar a integração e cache
 
 ### Ferramentas:
 
@@ -26,10 +25,6 @@ aplicativo também pra facilitar a integração e cache e tals
     - HTMX
 
 ### A fazeres:
-
-- [ ] Criar script para lançar o arquivo no servidor (subir no git, fazer ssh,
-      clonar a nova versão no server, ativar o venv, instalar as dependências
-      necessárias e rodar o serviço)
 
 - [ ] Terminar lista de compras
   - [x] Finalizar javascript e estilização:
