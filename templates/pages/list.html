@@ -1,116 +1,128 @@
 {% extends "index.html" %}
-
 {% block content %}
-
-    <link rel="stylesheet" href="{{  url_for('static', path='css/pages/list.css') }}"/>
-    <link
-  rel="stylesheet"
-  href="{{ url_for('static', path='css/components/modal.css') }}"
-/>
-<div class="modalOverlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modalHeader">
-      <div class="modalExit" id="modalExit"><button type="">X</button></div>
-      <div class="modalTitle">
-        <h1>Novo Item</h1>
-        <p>O que vamos comprar hoje?</p>
-      </div>
-    </div>
-    <div class="modalBody">
-      <div class="modalInput">
-        <label for="modalInputBox">Nome do produto</label>
-        <input
-          type="text"
-          name="name"
-          value=""
-          id="modalInputBox"
-          placeholder="Ex: Leite, Pão, Ovo.."
-        />
-        <p>Pressione <strong>Enter</strong> para adicionar rapidamente</p>
-      </div>
-      <div class="modalButtons">
-        <button id="buttonCancelar">Cancelar</button>
-        <button
-          id="buttonAdicionar"
-          hx-post="/list/item"
-          hx-target=".listItems"
-          hx-swap="innerHTML"
-          hx-include="#modalInputBox"
-          hx-trigger="click"
-          hx-on::after-request="closeModal()"
-        >
-          Adicionar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-        <div class="topBar">
-    <div class="left">
-        <span>
-            {% include 'icons/searchmagnifier.svg' %}
-        </span>
-        <input type="text" id="search-input" name="search" placeholder="Buscar item..." 
-               hx-get="/list/item/search" 
-               hx-target=".listItems" 
-
-               hx-swap="innerHTML transition:true"
-               hx-trigger="keyup changed" 
-               hx-include="[name='status']" 
-               autocomplete="off">
-    </div>
-    <div class="right">
-        <div class="listFilters">
-            <label class="filter-option">
-                <input type="radio" name="status" value="all" checked
-                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true"
-                       hx-include="#search-input" autocomplete="off">
-                <span>Todos</span>
-            </label>
-            
-            <label class="filter-option">
-                <input type="radio" name="status" value="pending" autocomplete="off"
-                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
-                <span>Pendentes</span>
-            </label>
-
-            <label class="filter-option">
-                <input type="radio" name="status" value="completed" autocomplete="off"
-                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
-                <span>Concluídos</span>
-            </label>
+    <link rel="stylesheet"
+          href="{{ url_for('static', path='css/pages/list.css') }}" />
+    <link rel="stylesheet"
+          href="{{ url_for('static', path='css/components/modal.css') }}" />
+    <div class="modalOverlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modalHeader">
+                <div class="modalExit" id="modalExit">
+                    <button type="">X</button>
+                </div>
+                <div class="modalTitle">
+                    <h1>Novo Item</h1>
+                    <p>O que vamos comprar hoje?</p>
+                </div>
+            </div>
+            <div class="modalBody">
+                <div class="modalInput">
+                    <label for="modalInputBox">Nome do produto</label>
+                    <input type="text"
+                           name="name"
+                           value=""
+                           id="modalInputBox"
+                           placeholder="Ex: Leite, Pão, Ovo.." />
+                    <p>
+                        Pressione <strong>Enter</strong> para adicionar rapidamente
+                    </p>
+                </div>
+                <div class="modalButtons">
+                    <button id="buttonCancelar">Cancelar</button>
+                    <button id="buttonAdicionar"
+                            hx-post="/list/item"
+                            hx-target=".listItems"
+                            hx-swap="innerHTML"
+                            hx-include="#modalInputBox"
+                            hx-trigger="click"
+                            hx-on::after-request="closeModal()">Adicionar</button>
+                </div>
+            </div>
         </div>
-        <span id="addItemButton">{% include 'icons/plusbutton.svg' %} Novo Item</span>
     </div>
-</div>
-        {% include "components/itemsList.html" %}
-        <script defer>
-            const modalOverLay = document.getElementById("modalOverlay");
-            const addItemButton = document.getElementById("addItemButton");
-              const modalExit = document.getElementById("modalExit");
-          const buttonCancelar = document.getElementById("buttonCancelar");
-          const modalInput = document.getElementById("modalInputBox");
+    <div class="topBar">
+        <div class="left">
+            <span>{% include 'icons/searchmagnifier.svg' %}</span>
+            <input type="text"
+                   id="search-input"
+                   name="search"
+                   placeholder="Buscar item..."
+                   hx-get="/list/item/search"
+                   hx-target=".listItems"
+                   hx-swap="innerHTML transition:true"
+                   hx-trigger="keyup changed"
+                   hx-include="[name='status']"
+                   autocomplete="off" />
+        </div>
+        <div class="right">
+            <div class="listFilters">
+                <label class="filter-option">
+                    <input type="radio"
+                           name="status"
+                           value="all"
+                           checked
+                           hx-get="/list/item/search"
+                           hx-target=".listItems"
+                           hx-swap="innerHTML transition:true"
+                           hx-include="#search-input"
+                           autocomplete="off" />
+                    <span>Todos</span>
+                </label>
+                <label class="filter-option">
+                    <input type="radio"
+                           name="status"
+                           value="pending"
+                           autocomplete="off"
+                           hx-get="/list/item/search"
+                           hx-target=".listItems"
+                           hx-swap="innerHTML transition:true"
+                           hx-include="#search-input" />
+                    <span>Pendentes</span>
+                </label>
+                <label class="filter-option">
+                    <input type="radio"
+                           name="status"
+                           value="completed"
+                           autocomplete="off"
+                           hx-get="/list/item/search"
+                           hx-target=".listItems"
+                           hx-swap="innerHTML transition:true"
+                           hx-include="#search-input" />
+                    <span>Concluídos</span>
+                </label>
+            </div>
+            <span id="addItemButton">
+                {% include "icons/plusbutton.svg" %}
+            Novo Item</span>
+        </div>
+    </div>
+    {% include "components/itemsList.html" %}
+    <script defer>
+        const modalOverLay = document.getElementById("modalOverlay");
+        const addItemButton = document.getElementById("addItemButton");
+        const modalExit = document.getElementById("modalExit");
+        const buttonCancelar = document.getElementById("buttonCancelar");
+        const modalInput = document.getElementById("modalInputBox");
 
-            addItemButton.addEventListener("click", () => {
-              modalOverLay.style.display = "flex";
-              modalInput.focus();
-            });
+        addItemButton.addEventListener("click", () => {
+            modalOverLay.style.display = "flex";
+            modalInput.focus();
+        });
 
+        modalExit.addEventListener("click", closeModal);
 
-              modalExit.addEventListener("click", closeModal);
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+            closeModal();
+            }
+        });
 
-              modalOverlay.addEventListener("click", (e) => {
-                if (e.target === modalOverlay) {
-                  closeModal()
-                }
-              });
+        buttonCancelar.addEventListener("click", closeModal);
 
-              buttonCancelar.addEventListener("click", closeModal);
-
-              function closeModal() {
-                modalOverlay.style.display = "none";
-                modalInput.value = "";
-              }
-              closeModal()
-        </script>
-{% endblock %}
+        function closeModal() {
+            modalOverlay.style.display = "none";
+            modalInput.value = "";
+        }
+        closeModal();
+    </script>
+{% endblock content %}

@@ -1,50 +1,41 @@
-<link rel="stylesheet" href="{{ url_for('static', path='css/components/item.css')}}" />
-<div class="itemBody" id="item-{{item.id}}" hx-history="false">
-
-  <div class="left">
-    <input type="checkbox" {{ "checked" if item.completed else ""  }}
-        id="check-{{ item.id }}" class="custom-checkbox"  
-        name="completed"
-        hx-post="/list/item/{{item.id}}/completed"
-        hx-swap="outerHTML transition:true"
-        hx-target="#item-{{item.id}}"
-        hx-trigger="change"
-        hx-include="this"
-        hx-sync="this:replace"
-        autocomplete="off"
-        />
-    <label for="check-{{ item.id }}" class="checkbox-skin" ></label>
-    <p class="itemTitle">{{ item.name }}</p>
-  </div>
-
-  <div class="right">
-    <div class="itemQuantity">
-      <button
-        type=""
-        class="itemReduce"
-        hx-post="/list/item/{{item.id}}/decrease"
-        hx-swap="outerHTML"
-        hx-target="#item-{{item.id}}"
-      >
-        -
-      </button>
-      <p class="itemQuantityNum">{{ item.num }}</p>
-      <button
-        type=""
-        class="itemIncrease"
-        hx-post="/list/item/{{item.id}}/increase"
-        hx-swap="outerHTML"
-        hx-target="#item-{{item.id}}"
-      >
-        +
-      </button>
+<link rel="stylesheet"
+      href="{{ url_for('static', path='css/components/item.css') }}" />
+<div class="itemBody" id="item-{{ item.id }}" hx-history="false">
+    <div class="left">
+        <input type="checkbox"
+               {{ "checked" if item.completed else "" }}
+               id="check-{{ item.id }}"
+               class="custom-checkbox"
+               name="completed"
+               hx-post="/list/item/{{ item.id }}/completed"
+               hx-swap="outerHTML transition:true"
+               hx-target="#item-{{ item.id }}"
+               hx-trigger="change"
+               hx-include="this"
+               hx-sync="this:replace"
+               autocomplete="off" />
+        <label for="check-{{ item.id }}" class="checkbox-skin"></label>
+        <p class="itemTitle">{{ item.name }}</p>
     </div>
-    <span src="{{ url_for('static', path='/img/trash.svg') }}"
-      class="itemDelete"
-      hx-delete="/list/item/{{item.id}}"
-      hx-swap="innerHTML"
-      hx-target=".listItems"
-      hx-confirm="Tem certeza?"
-      >{% include 'icons/trash.svg' %}</span>
-  </div>
+    <div class="right">
+        <div class="itemQuantity">
+            <button type=""
+                    class="itemReduce"
+                    hx-post="/list/item/{{ item.id }}/decrease"
+                    hx-swap="outerHTML"
+                    hx-target="#item-{{ item.id }}">-</button>
+            <p class="itemQuantityNum">{{ item.num }}</p>
+            <button type=""
+                    class="itemIncrease"
+                    hx-post="/list/item/{{ item.id }}/increase"
+                    hx-swap="outerHTML"
+                    hx-target="#item-{{ item.id }}">+</button>
+        </div>
+        <span src="{{ url_for('static', path='/img/trash.svg') }}"
+              class="itemDelete"
+              hx-delete="/list/item/{{ item.id }}"
+              hx-swap="innerHTML"
+              hx-target=".listItems"
+              hx-confirm="Tem certeza?">{% include "icons/trash.svg" %}</span>
+    </div>
 </div>
