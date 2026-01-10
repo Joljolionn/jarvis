@@ -3,7 +3,48 @@
 {% block content %}
 
     <link rel="stylesheet" href="{{  url_for('static', path='css/pages/list.css') }}"/>
-    {% include "components/modal.html" %}
+    <link
+  rel="stylesheet"
+  href="{{ url_for('static', path='css/components/modal.css') }}"
+/>
+<div class="modalOverlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modalHeader">
+      <div class="modalExit" id="modalExit"><button type="">X</button></div>
+      <div class="modalTitle">
+        <h1>Novo Item</h1>
+        <p>O que vamos comprar hoje?</p>
+      </div>
+    </div>
+    <div class="modalBody">
+      <div class="modalInput">
+        <label for="modalInputBox">Nome do produto</label>
+        <input
+          type="text"
+          name="name"
+          value=""
+          id="modalInputBox"
+          placeholder="Ex: Leite, Pão, Ovo.."
+        />
+        <p>Pressione <strong>Enter</strong> para adicionar rapidamente</p>
+      </div>
+      <div class="modalButtons">
+        <button id="buttonCancelar">Cancelar</button>
+        <button
+          id="buttonAdicionar"
+          hx-post="/list/item"
+          hx-target=".listItems"
+          hx-swap="innerHTML"
+          hx-include="#modalInputBox"
+          hx-trigger="click"
+          hx-on::after-request="closeModal()"
+        >
+          Adicionar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
         <div class="topBar">
     <div class="left">
         <span>
@@ -46,10 +87,30 @@
         <script defer>
             const modalOverLay = document.getElementById("modalOverlay");
             const addItemButton = document.getElementById("addItemButton");
+              const modalExit = document.getElementById("modalExit");
+          const buttonCancelar = document.getElementById("buttonCancelar");
+          const modalInput = document.getElementById("modalInputBox");
 
             addItemButton.addEventListener("click", () => {
               modalOverLay.style.display = "flex";
               modalInput.focus();
             });
+
+
+              modalExit.addEventListener("click", closeModal);
+
+              modalOverlay.addEventListener("click", (e) => {
+                if (e.target === modalOverlay) {
+                  closeModal()
+                }
+              });
+
+              buttonCancelar.addEventListener("click", closeModal);
+
+              function closeModal() {
+                modalOverlay.style.display = "none";
+                modalInput.value = "";
+              }
+              closeModal()
         </script>
 {% endblock %}

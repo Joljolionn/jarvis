@@ -100,6 +100,7 @@ async def add_new_item(request: Request, name: str = Form("")):
         # Retorna 204 para o HTMX entender que não há nada para atualizar
         return Response(status_code=204)
 
+    items: list(db.Item)
     with db._Session() as session:
         item = db.Item()
         item.name = name
@@ -108,9 +109,10 @@ async def add_new_item(request: Request, name: str = Form("")):
         session.add(item)
         session.commit()
         session.refresh(item)
+        items = session.query(db.Item).all()
 
     return templates.TemplateResponse(
-        "components/item.html", {"request": request, "item": item}
+            "components/itemsList.html", {"request": request, "items": items, "itemslength": len(items)}
     )
 
 @app.get("/list/item/search", response_class=HTMLResponse)
