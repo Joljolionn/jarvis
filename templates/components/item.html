@@ -5,7 +5,7 @@
     <input type="checkbox" {{ "checked" if item.completed else ""  }}
         id="check-{{ item.id }}" class="custom-checkbox"  
         name="completed"
-        hx-post="/item/{{item.id}}/completed"
+        hx-post="/list/item/{{item.id}}/completed"
         hx-swap="outerHTML transition:true"
         hx-target="#item-{{item.id}}"
         hx-trigger="change"
@@ -22,7 +22,7 @@
       <button
         type=""
         class="itemReduce"
-        hx-post="/item/{{item.id}}/decrease"
+        hx-post="/list/item/{{item.id}}/decrease"
         hx-swap="outerHTML"
         hx-target="#item-{{item.id}}"
       >
@@ -32,7 +32,7 @@
       <button
         type=""
         class="itemIncrease"
-        hx-post="/item/{{item.id}}/increase"
+        hx-post="/list/item/{{item.id}}/increase"
         hx-swap="outerHTML"
         hx-target="#item-{{item.id}}"
       >
@@ -41,7 +41,7 @@
     </div>
     <span src="{{ url_for('static', path='/img/trash.svg') }}"
       class="itemDelete"
-      hx-delete="/item/{{item.id}}"
+      hx-delete="/list/item/{{item.id}}"
       hx-swap="innerHTML"
       hx-target=".listItems"
       hx-confirm="Tem certeza?"

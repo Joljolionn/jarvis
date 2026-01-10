@@ -10,7 +10,7 @@
             {% include 'icons/searchmagnifier.svg' %}
         </span>
         <input type="text" id="search-input" name="search" placeholder="Buscar item..." 
-               hx-get="/tasks" 
+               hx-get="/list/item/search" 
                hx-target=".listItems" 
 
                hx-swap="innerHTML transition:true"
@@ -22,20 +22,20 @@
         <div class="listFilters">
             <label class="filter-option">
                 <input type="radio" name="status" value="all" checked
-                       hx-get="/tasks" hx-target=".listItems" hx-swap="innerHTML transition:true"
+                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true"
                        hx-include="#search-input" autocomplete="off">
                 <span>Todos</span>
             </label>
             
             <label class="filter-option">
                 <input type="radio" name="status" value="pending" autocomplete="off"
-                       hx-get="/tasks" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
+                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
                 <span>Pendentes</span>
             </label>
 
             <label class="filter-option">
                 <input type="radio" name="status" value="completed" autocomplete="off"
-                       hx-get="/tasks" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
+                       hx-get="/list/item/search" hx-target=".listItems" hx-swap="innerHTML transition:true" hx-include="#search-input">
                 <span>Concluídos</span>
             </label>
         </div>

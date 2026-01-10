@@ -2,7 +2,6 @@ from fastapi import FastAPI, Form, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from sqlalchemy.orm import query
 import db
 import requests
 import json
@@ -13,17 +12,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
+# Page endpoints
 
-@app.get("/", response_class=HTMLResponse)
-async def get_root(request: Request, response: Response):
-    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+@app.get("/list", response_class=HTMLResponse)
+async def get_list_page(request: Request):
     items = []
-    print("Atualizando página")
     with db._Session() as session:
         items = session.query(db.Item).all()
-        for item in items:
-            print(f"{item.name} - {item.completed}")
-    print("Página atualizada")
     return templates.TemplateResponse(
         "pages/list.html",
         {"request": request, "items": items, "itemslength": len(items)},
@@ -31,7 +26,7 @@ async def get_root(request: Request, response: Response):
 
 
 @app.get("/message", response_class=HTMLResponse)
-async def get_message(request: Request):
+async def get_message_page(request: Request):
     res = requests.get("https://api-random.vercel.app/")
     message = json.loads(res.text)
 
@@ -40,7 +35,9 @@ async def get_message(request: Request):
     )
 
 
-@app.delete("/item/{id}", response_class=HTMLResponse)
+# Component endpoints
+
+@app.delete("/list/item/{id}", response_class=HTMLResponse)
 async def delete_item(id: int, request: Request):
     with db._Session() as session:
         item = session.query(db.Item).filter(db.Item.id == id).first()
@@ -53,8 +50,7 @@ async def delete_item(id: int, request: Request):
         {"request": request, "items": items, "itemslength": len(items)},
     )
 
-
-@app.post("/item/{id}/increase", response_class=HTMLResponse)
+@app.post("/list/item/{id}/increase", response_class=HTMLResponse)
 async def increse_item_quantity(id: int, request: Request):
     item: db.Item
     with db._Session() as session:
@@ -66,8 +62,7 @@ async def increse_item_quantity(id: int, request: Request):
             "components/item.html", {"request": request, "item": item}
         )
 
-
-@app.post("/item/{id}/decrease", response_class=HTMLResponse)
+@app.post("/list/item/{id}/decrease", response_class=HTMLResponse)
 async def decrese_item_quantity(id: int, request: Request):
     item: db.Item
     with db._Session() as session:
@@ -83,8 +78,7 @@ async def decrese_item_quantity(id: int, request: Request):
         "components/item.html", {"request": request, "item": item}
     )
 
-
-@app.post("/item/{id}/completed", response_class=HTMLResponse)
+@app.post("/list/item/{id}/completed", response_class=HTMLResponse)
 async def toggle_completed_item(
     id: int, request: Request, completed: bool = Form(False)
 ):
@@ -94,14 +88,12 @@ async def toggle_completed_item(
             item.completed = completed
             session.commit()
             session.refresh(item)
-            print(f"Salvo no DB: {item.name} - {item.completed}")
 
         return templates.TemplateResponse(
             "components/item.html", {"request": request, "item": item}
         )
 
-
-@app.post("/item", response_class=HTMLResponse)
+@app.post("/list/item", response_class=HTMLResponse)
 async def add_new_item(request: Request, name: str = Form("")):
     name = name.strip()
     if not name:
@@ -121,8 +113,7 @@ async def add_new_item(request: Request, name: str = Form("")):
         "components/item.html", {"request": request, "item": item}
     )
 
-
-@app.get("/tasks", response_class=HTMLResponse)
+@app.get("/list/item/search", response_class=HTMLResponse)
 async def search_item_list(request: Request, status: str = "all", search: str = ""):
     with db._Session() as session:
         items_query = session.query(db.Item)
@@ -137,5 +128,6 @@ async def search_item_list(request: Request, status: str = "all", search: str = 
         items = items_query.all()
 
         return templates.TemplateResponse(
-                "/components/itemsList.html", {"request": request, "items": items, "itemslength": len(items)}
+            "/components/itemsList.html",
+            {"request": request, "items": items, "itemslength": len(items)},
         )
