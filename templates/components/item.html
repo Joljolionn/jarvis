@@ -1,5 +1,3 @@
-<link rel="stylesheet"
-      href="{{ url_for('static', path='css/components/item.css') }}" />
 <div class="itemBody" id="item-{{ item.id }}" hx-history="false">
     <div class="left">
         <input type="checkbox"
@@ -35,7 +33,7 @@
               class="itemDelete"
               hx-delete="/list/item/{{ item.id }}"
               hx-swap="innerHTML"
-              hx-target=".listItems"
+              hx-target=".itemsList"
               hx-confirm="Tem certeza?">{% include "icons/trash.svg" %}</span>
     </div>
 </div>

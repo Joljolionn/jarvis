@@ -1,4 +1,4 @@
-/* --- CONTAINER PRINCIPAL --- */
+/* --- CORPO DO ITEM --- */
 .itemBody {
     display: flex;
     justify-content: space-between;
@@ -18,10 +18,9 @@
 }
 
 /* --- LADO ESQUERDO: Checkbox e Título --- */
-.itemBody .left {
+.itemBody>.left {
     display: flex;
     align-items: center;
-    /* Alinhamento centralizado garantido */
 }
 
 .itemBody .custom-checkbox {
@@ -62,7 +61,7 @@
 }
 
 /* --- LADO DIREITO: Quantidade e Ações --- */
-.itemBody .right {
+.itemBody>.right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -83,7 +82,7 @@
     transition: opacity 0.3s ease-in;
 }
 
-.itemBody .itemQuantity button {
+.itemBody .itemQuantity>button {
     width: 30%;
     height: 100%;
     background-color: #ffffff;
@@ -92,7 +91,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.itemBody .itemQuantity button:hover {
+.itemBody .itemQuantity>button:hover {
     filter: brightness(0.9);
 }
 
@@ -108,21 +107,21 @@
     cursor: pointer;
 }
 
-.itemDelete svg {
+.itemBody .itemDelete>svg {
     height: 100%;
     width: 100%;
-    fill: #666; /* Cor cinza inicial */
+    fill: #666;
+    /* Cor cinza inicial */
     transition: fill 0.2s ease-in-out;
 }
 
-.itemDelete:hover svg {
-    fill: #ff4d4d; 
+.itemBody .itemDelete:hover>svg {
+    fill: #ff4d4d;
 }
 
 
 /* --- ESTADOS (CHECKED / HTMX) --- */
 
-/* Quando o checkbox está marcado */
 .itemBody .custom-checkbox:checked+.checkbox-skin {
     background-color: #4caf50;
     border-color: #4caf50;
@@ -132,7 +131,6 @@
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* Alterações no Body via :has */
 .itemBody:has(.custom-checkbox:checked) {
     background-color: rgba(0, 0, 0, 0.08);
     border-color: transparent;
