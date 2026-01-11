@@ -48,6 +48,9 @@ aplicativo também pra facilitar a integração e cache
     - [x] Adicionar icone de carrinho no topo do site
     - [x] Adicionar icone para a página em si
   - [ ] Fazer refatoração final
+  - [ ] Adicionar botão para limpar barra de busca
+  - [ ] Melhorar componente de header
+  - [ ] Fazer com que o título mude para cada página
 
 - [ ] Fazer sistema de avisos compartilhado (cada um faz login no sistema,
       colocar uma foto e nome e sobe lembretes compartilhados com data marcada de
