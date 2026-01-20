@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+from api import mobileRouter
 import db
 import requests
 import json
@@ -133,3 +134,5 @@ async def search_item_list(request: Request, status: str = "all", search: str = 
             "/components/itemsList.html",
             {"request": request, "items": items, "itemslength": len(items)},
         )
+
+app.include_router(mobileRouter, prefix="/api")
